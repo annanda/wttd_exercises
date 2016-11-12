@@ -17,8 +17,15 @@
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
 def verbing(s):
-    # +++your code here+++
-    return
+    if len(s) < 3:
+        return s
+    else:
+        list_s = list(s)
+        if s[-3:] == "ing":
+            list_s += ["l", "y"]
+        else:
+            list_s += ["i", "n", "g"]
+    return "".join(list_s)
 
 
 # E. not_bad
