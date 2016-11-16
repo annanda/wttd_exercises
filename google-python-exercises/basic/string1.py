@@ -67,14 +67,16 @@ def fix_start(s):
 #   'dog', 'dinner' -> 'dig donner'
 # Assume a and b are length 2 or more.
 def mix_up(a, b):
-    a = list(a)
-    b = list(b)
-    c = [b[0], b[1]]
-    c += a[2:]
-    c += " "
-    c += a[0] + a[1]
-    c += b[2:]
-    return "".join(c)
+    parts = [b[:2], a[2:], ' ', a[:2], b[2:]]
+    return "".join(parts)
+    # a = list(a)
+    # b = list(b)
+    # c = [b[0], b[1]]
+    # c += a[2:]
+    # c += " "
+    # c += a[0] + a[1]
+    # c += b[2:]
+    # return "".join(c)
 
 
 # Provided simple test() function used in main() to print
