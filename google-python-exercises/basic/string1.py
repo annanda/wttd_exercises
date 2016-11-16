@@ -39,7 +39,7 @@ def donuts(count):
 # is less than 2, return instead the empty string.
 def both_ends(s):
     saida = ""
-    if len(s) >= 3:
+    if len(s) > 1:
         saida = s[:2] + s[-2:]
     return saida
 
@@ -54,11 +54,9 @@ def both_ends(s):
 # Hint: s.replace(stra, strb) returns a version of string s
 # where all instances of stra have been replaced by strb.
 def fix_start(s):
-    first_letter = s[0]
-    s = s.replace(s[0], '*')
-    s = list(s)
-    s[0] = first_letter
-    return "".join(s)
+    head = s[0]
+    tail = s[1:]
+    return head + tail.replace(head, '*')
 
 
 # D. MixUp
