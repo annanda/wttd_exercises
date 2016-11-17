@@ -19,12 +19,20 @@
 def verbing(s):
     if len(s) < 3:
         return s
+    if s.endswith("ing"):
+        sufixo = "ly"
     else:
-        list_s = list(s)
-        if s[-3:] == "ing":
-            list_s += ["l", "y"]
-        else:
-            list_s += ["i", "n", "g"]
+        sufixo = "ing"
+
+    return s + sufixo
+
+
+    list_s = list(s)
+
+    if s.endswith("ing"):
+        list_s += ["l", "y"]
+    else:
+        list_s += ["i", "n", "g"]
     return "".join(list_s)
 
 
@@ -39,12 +47,11 @@ def verbing(s):
 def not_bad(s):
     word_not = "not"
     word_bad = "bad"
-    find_not = s.find(word_bad)
-    find_bad = s.find(word_bad)
-    if find_bad > find_not:
-        s.s
-    # +++your code here+++
-    return
+    not_index = s.find(word_not)
+    bad_index = s.find(word_bad) + 3
+    if bad_index > not_index:
+        return s.replace(s[not_index:bad_index], "good")
+    return s
 
 
 # F. front_back
