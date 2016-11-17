@@ -45,13 +45,18 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
+    import re
+    return re.sub(r'not\b(.(?!not))*?bad', "good", s)
+    return re.sub(r'not(.*)bad', "good", s)
+
     word_not = "not"
     word_bad = "bad"
     not_index = s.find(word_not)
-    bad_index = s.find(word_bad) + 3
-    if bad_index > not_index:
-        return s.replace(s[not_index:bad_index], "good")
-    return s
+    bad_index = s.rfind(word_bad) + 3
+
+    if not_index > bad_index:
+        return s
+    return s.replace(s[not_index:bad_index], "good")
 
 
 # F. front_back
@@ -90,6 +95,7 @@ def main():
     test(not_bad('This dinner is not that bad!'), 'This dinner is good!')
     test(not_bad('This tea is not hot'), 'This tea is not hot')
     test(not_bad("It's bad yet not"), "It's bad yet not")
+    test(not_bad("This is not not bad"), "This is not good")
 
     print()
     print('front_back')
