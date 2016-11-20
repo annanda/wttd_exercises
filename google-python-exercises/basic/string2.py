@@ -59,9 +59,6 @@ def not_bad(s):
     return s.replace(s[not_index:bad_index], "good")
 
 
-
-
-
 # F. front_back
 # Consider dividing a string into two halves.
 # If the length is even, the front and back halves are the same length.
@@ -70,32 +67,12 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-    def is_even(number):
-        if number % 2 == 0:
-            return True
-        return False
+    mid = lambda s: (len(s) + 1) // 2
+    front = lambda s: s[:mid(s)]
+    back = lambda s: s[mid(s):]
 
-    def divide_even_string(s):
-        s_front = s[:len(s) // 2]
-        s_back = s[len(s) // 2:]
-        return s_front, s_back
+    return front(a) + front (b) + back(a) + back(b)
 
-    def divide_odd_string(s):
-        s_front = s[:len(s) // 2 + 1]
-        s_back = s[len(s) // 2 + 1:]
-        return s_front, s_back
-
-    if is_even(len(a)):
-        a_front, a_back = divide_even_string(a)
-    else:
-        a_front, a_back = divide_odd_string(a)
-    if is_even(len(b)):
-        b_front, b_back = divide_even_string(b)
-    else:
-        b_front, b_back = divide_odd_string(b)
-
-    return a_front + b_front + a_back + b_back
- 
 
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
